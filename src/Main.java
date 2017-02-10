@@ -18,14 +18,28 @@ public class Main {
 
         lotAvailability(carLotInfo);
 
-//        for (CarLot c: carLotInfo) {
-//            System.out.println(c);
-//        }
-
         displayCars(carLotInfo);
+
+        do {
 
         System.out.println("Which list would you like to see?");
         int listNum = scan.nextInt();
+
+        whichList(carList, carList2, listNum);
+
+            System.out.println("Are you interested in another vehicle? y/n");
+            scan.nextLine();
+            userInput = scan.nextLine();
+
+        } while (userInput.equalsIgnoreCase("y"));
+
+        System.out.println("Bye!");
+
+    }
+
+    public static void whichList(ArrayList<Car> carList, ArrayList<Car> carList2, int listNum) {
+
+        Scanner scan = new Scanner(System.in);
 
         if (listNum == 1) {
 
@@ -34,6 +48,13 @@ public class Main {
             for (int i = 0; i < carList.size(); i++) {
                 System.out.printf("%d. %s\n", i + 1, carList.get(i).toString());
             }
+            System.out.println();
+
+            System.out.println("Which vehicle would you like to see?");
+            int carPick = scan.nextInt();
+
+            System.out.println(carList.get(carPick - 1));
+            //extracts the line the user selected
             System.out.println();
 
         } else {
@@ -45,8 +66,14 @@ public class Main {
             }
             System.out.println();
 
-        }
+            System.out.println("Which vehicle would you like to see?");
+            int carPick = scan.nextInt();
 
+            System.out.println(carList2.get(carPick - 1));
+            //extracts the line the user selected
+            System.out.println();
+
+        }
     }
 
     public static void displayCars(ArrayList<CarLot> carLotInfo) {
